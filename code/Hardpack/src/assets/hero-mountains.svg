@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 420" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1d4f8f"/>
+      <stop offset="0.55" stop-color="#5f93c9"/>
+      <stop offset="1" stop-color="#b9d3ea"/>
+    </linearGradient>
+    <linearGradient id="far" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e9f2fb"/>
+      <stop offset="1" stop-color="#7f9fbf"/>
+    </linearGradient>
+    <linearGradient id="mid" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f7fbff"/>
+      <stop offset="0.45" stop-color="#9db6cf"/>
+      <stop offset="1" stop-color="#3c5875"/>
+    </linearGradient>
+    <linearGradient id="near" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#dfe9f4"/>
+      <stop offset="0.5" stop-color="#4d6a88"/>
+      <stop offset="1" stop-color="#1b2d44"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.8" cy="0.15" r="0.5">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1600" height="420" fill="url(#sky)"/>
+  <rect width="1600" height="420" fill="url(#glow)"/>
+
+  <!-- wispy clouds -->
+  <g fill="#ffffff" opacity="0.35">
+    <ellipse cx="1180" cy="70" rx="160" ry="14"/>
+    <ellipse cx="1320" cy="96" rx="120" ry="10"/>
+    <ellipse cx="900" cy="52" rx="110" ry="9"/>
+  </g>
+
+  <!-- far range -->
+  <path fill="url(#far)" opacity="0.85"
+    d="M0 250 L90 190 L160 225 L250 150 L330 205 L420 160 L520 215 L610 140 L700 200 L790 170 L880 120 L960 185 L1050 135 L1140 190 L1230 110 L1320 175 L1410 130 L1500 180 L1600 150 L1600 420 L0 420 Z"/>
+
+  <!-- middle range with snowy faces -->
+  <path fill="url(#mid)"
+    d="M0 300 L120 230 L210 270 L330 175 L430 255 L540 200 L640 265 L760 160 L860 245 L960 205 L1060 95 L1150 190 L1230 150 L1330 230 L1440 120 L1530 210 L1600 185 L1600 420 L0 420 Z"/>
+  <!-- shaded right-hand faces -->
+  <g fill="#36506e" opacity="0.35">
+    <path d="M1060 95 L1150 190 L1100 260 Z"/>
+    <path d="M1440 120 L1530 210 L1480 270 Z"/>
+    <path d="M760 160 L860 245 L800 290 Z"/>
+    <path d="M330 175 L430 255 L370 290 Z"/>
+  </g>
+
+  <!-- near ridge -->
+  <path fill="url(#near)"
+    d="M0 360 L140 300 L260 335 L400 270 L520 330 L660 290 L800 345 L940 285 L1080 335 L1220 260 L1360 320 L1480 280 L1600 310 L1600 420 L0 420 Z"/>
+
+  <!-- foreground snow -->
+  <path fill="#e8f0f8" opacity="0.9"
+    d="M0 400 C220 370 420 395 640 380 C860 365 1080 395 1300 378 C1420 370 1520 380 1600 372 L1600 420 L0 420 Z"/>
+</svg>

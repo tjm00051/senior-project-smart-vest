@@ -1,474 +1,569 @@
+/* ThermoShell Connect – layout and colors follow the GUI mockup in SRS v1.0, Appendix B. */
 
 :root {
-  --navy: #081522;
-  --panel: #101f2e;
-  --panel-light: #15283a;
-  --border: #20364a;
+  --bg: #071526;
+  --bg-2: #0a1c32;
+  --panel: #0d2139;
+  --panel-2: #10294a;
+  --border: #1d3a5c;
   --text: #f4f7fc;
-  --muted: #aab9ca;
-  --blue: #3698ff;
-  --gold: #e9bd64;
+  --muted: #a9bbd0;
+  --gold: #f7c234;
+  --gold-ink: #1a1405;
+  --blue: #3b8cff;
+  --blue-soft: #5aa2ff;
+  --red: #ff3b3b;
+  --green: #2ecc4f;
+  --radius: 14px;
 }
 
 body {
-  background: #dce5ef;
+  background: var(--bg);
   color: var(--text);
 }
 
 #root {
-  width: 100%;
   min-height: 100vh;
-  background: linear-gradient(145deg, #0a1725, #101e2c);
+  background: linear-gradient(160deg, var(--bg) 0%, var(--bg-2) 100%);
 }
 
+/* ---------- App shell ---------- */
+
+.app-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 14px 24px;
+  border-bottom: 1px solid var(--border);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.brand-logo {
+  width: 54px;
+  height: 36px;
+  color: #fff;
+}
+
+.brand-name {
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.brand-name span {
+  color: var(--gold);
+}
+
+.app-body {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  gap: 14px;
+  padding: 14px;
+}
+
+.app-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 12px 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: rgba(13, 33, 57, 0.6);
+}
+
+.app-content {
+  min-width: 0;
+}
+
+/* ---------- Navigation ---------- */
+
+.nav {
+  display: flex;
+  gap: 8px;
+}
+
+.nav-side {
+  flex-direction: column;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+  border-radius: 10px;
+  color: var(--text);
+  font-size: 16px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.nav-link:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.nav-link.active {
+  background: var(--gold);
+  color: var(--gold-ink);
+  font-weight: 700;
+}
+
+.nav-link svg {
+  color: var(--muted);
+  flex-shrink: 0;
+}
+
+.nav-link.active svg {
+  color: var(--gold-ink);
+}
+
+.nav-top .nav-link {
+  padding: 10px 22px;
+}
+
+.nav-side .nav-link {
+  font-size: 17px;
+  padding: 12px 14px;
+}
+
+/* ---------- Vest connection card ---------- */
+
+.connection-status {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 12px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--panel);
+}
+
+.connection-status strong {
+  display: block;
+  font-size: 16px;
+}
+
+.connection-status small {
+  display: block;
+  margin-top: 2px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.connection-indicator {
+  width: 26px;
+  height: 26px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 12px rgba(46, 204, 79, 0.55);
+}
+
+.connection-status.disconnected .connection-indicator {
+  background: #6b7a8c;
+  box-shadow: none;
+}
+
+/* ---------- Dashboard ---------- */
+
 .dashboard {
-  width: 100%;
-  max-width: 1500px;
-  margin: 0 auto;
-  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .hero-banner {
   position: relative;
-  min-height: 310px;
+  min-height: 220px;
   display: flex;
   align-items: center;
-  padding: 40px;
+  padding: 32px;
   overflow: hidden;
   border: 1px solid var(--border);
-  border-radius: 18px;
+  border-radius: var(--radius);
   background:
-    linear-gradient(
-      90deg,
-      rgba(5, 17, 30, 0.96) 0%,
-      rgba(5, 17, 30, 0.78) 48%,
-      rgba(5, 17, 30, 0.08) 100%
-    ),
-    url('./assets/winter-mountains.png') center 48% / cover;
+    linear-gradient(90deg, rgba(7, 21, 38, 0.92) 0%, rgba(7, 21, 38, 0.55) 45%, rgba(7, 21, 38, 0) 75%),
+    url('./assets/hero-mountains.svg') center / cover;
 }
 
 .hero-copy {
-  position: relative;
-  z-index: 1;
-  max-width: 590px;
-}
-
-.hero-eyebrow {
-  margin-bottom: 14px;
-  color: var(--gold);
-  font-size: 12px;
-  font-weight: 800;
-  letter-spacing: 0.18em;
+  max-width: 620px;
 }
 
 .hero-banner h1 {
   margin: 0;
   color: #fff;
-  font-size: clamp(34px, 4vw, 54px);
-  line-height: 1.08;
+  font-size: clamp(36px, 4.4vw, 58px);
+  line-height: 1.05;
   font-weight: 800;
-  letter-spacing: -0.04em;
+  letter-spacing: -0.02em;
+}
+
+.hero-banner h1 .accent {
+  color: var(--gold);
 }
 
 .hero-description {
-  margin: 18px 0 0;
-  color: #d8e4f0;
-  font-size: 16px;
-  line-height: 1.6;
-}
-
-.device-status-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 16px;
-  margin: 18px 0 32px;
-}
-
-.status-card {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  min-width: 0;
-  padding: 18px;
-  background: linear-gradient(145deg, #13273a, #0d1b29);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-}
-
-.status-icon {
-  display: grid;
-  place-items: center;
-  width: 46px;
-  height: 46px;
-  flex-shrink: 0;
-  border-radius: 50%;
-  font-size: 25px;
-  font-weight: 800;
-}
-
-.bluetooth-icon {
-  color: #51a9ff;
-  background: #102e4c;
-}
-
-.battery-icon {
-  color: #55dc7c;
-  background: #153c31;
-}
-
-.heat-icon {
-  color: #ff7959;
-  background: #412a2a;
-}
-
-.status-card h3 {
-  margin: 0 0 7px;
-  color: #e9f0f8;
-  font-size: 14px;
-}
-
-.status-value {
-  margin: 0;
-  color: #fff;
+  margin: 14px 0 0;
+  color: #e3ecf6;
   font-size: 18px;
-  font-weight: 750;
-}
-
-.connection-status {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  color: #58dc83;
-  font-size: 12px;
-  font-weight: 650;
-}
-
-.connection-status.connected,
-.connection-status.disconnected {
-  padding: 0;
-  background: transparent;
-}
-
-.connection-indicator {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: currentColor;
-}
-
-.dashboard-section {
-  margin-bottom: 28px;
-}
-
-.section-title-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 18px;
-  margin-bottom: 18px;
-}
-
-.section-title-row h2,
-.heating-panel h2,
-.comfort-panel h2 {
-  margin: 0 0 6px;
-  color: #f5f8fd;
-  font-size: 21px;
-  font-weight: 750;
-}
-
-.section-title-row p {
-  margin: 0;
-  color: var(--muted);
-  font-size: 13px;
-}
-
-.live-indicator {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  color: var(--muted);
-  font-size: 12px;
-}
-
-.live-indicator span {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #48d878;
+  line-height: 1.45;
 }
 
 .metrics-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 16px;
+  gap: 12px;
 }
 
 .metric-card {
-  min-width: 0;
-  min-height: 150px;
-  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  min-height: 144px;
+  padding: 18px 12px;
   border: 1px solid var(--border);
-  border-radius: 13px;
-  border-top: 1px solid var(--border);
-  background: linear-gradient(145deg, #132536, #0d1a27);
-  box-shadow: 0 5px 16px rgba(0, 0, 0, 0.12);
-  transition: transform 0.2s ease, border-color 0.2s ease;
+  border-radius: var(--radius);
+  background: var(--panel);
+  text-align: center;
 }
 
-.metric-card:hover {
-  transform: translateY(-3px);
-  border-color: #3a668b;
+.metric-card.highlighted {
+  border-color: var(--blue-soft);
+  box-shadow: 0 0 0 1px rgba(90, 162, 255, 0.35), 0 0 22px rgba(59, 140, 255, 0.18);
 }
+
+.metric-icon {
+  display: grid;
+  place-items: center;
+  height: 36px;
+  margin-bottom: 4px;
+}
+
+.tone-heart { color: var(--red); }
+.tone-temp { color: var(--blue-soft); }
+.tone-ambient { color: var(--gold); }
+.tone-battery { color: var(--green); }
 
 .metric-label {
-  margin-bottom: 20px;
-  color: #c1cfde;
-  font-size: 13px;
-  font-weight: 650;
+  margin: 0;
+  color: var(--text);
+  font-size: 15px;
+  font-weight: 500;
 }
 
 .metric-value {
   color: #fff;
-  font-size: clamp(25px, 2.5vw, 34px);
-  font-weight: 800;
-  letter-spacing: -0.04em;
-  overflow-wrap: anywhere;
+  font-size: 38px;
+  line-height: 1.1;
+  font-weight: 700;
+  letter-spacing: -0.01em;
 }
 
 .metric-unit {
-  color: #b6c5d6;
-  font-size: 13px;
-  font-weight: 500;
-  letter-spacing: 0;
-}
-
-.heating-panel,
-.comfort-panel {
-  margin-bottom: 18px;
-  padding: 24px;
-  border: 1px solid var(--border);
-  border-radius: 15px;
-  background: linear-gradient(145deg, #132536, #0d1a27);
-}
-
-.auto-mode-label {
-  padding: 7px 10px;
-  border: 1px solid #244c73;
-  border-radius: 8px;
-  color: #7ebcff;
-  background: #102a42;
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 0.07em;
-}
-
-.heat-scale {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  margin: 26px 0;
-  color: var(--muted);
-  font-size: 12px;
-}
-
-.heat-track {
-  position: relative;
-  flex: 1;
-  height: 12px;
-  border-radius: 999px;
-  background: linear-gradient(90deg, #2876e6, #41a6f6, #ff8a45);
-}
-
-.heat-track-fill {
-  width: 52%;
-  height: 100%;
-  border-radius: inherit;
-  background: linear-gradient(90deg, #2876e6, #41a6f6);
-}
-
-.heat-knob {
-  position: absolute;
-  top: 50%;
-  left: 52%;
-  width: 22px;
-  height: 22px;
-  border: 4px solid #fff;
-  border-radius: 50%;
-  background: #8fbce9;
-  box-shadow: 0 2px 8px #0008;
-  transform: translate(-50%, -50%);
-}
-
-.target-temperature {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 18px;
-  padding-top: 20px;
-  border-top: 1px solid var(--border);
-}
-
-.target-temperature h3 {
-  margin: 0 0 5px;
-  color: #edf4fc;
+  color: var(--text);
   font-size: 14px;
 }
 
-.target-temperature p {
-  margin: 0;
-  color: var(--muted);
-  font-size: 12px;
+/* ---------- Heating control ---------- */
+
+.heating-panel {
+  padding: 18px 22px 22px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--panel);
 }
 
-.temperature-control {
+.heating-header {
   display: flex;
   align-items: center;
-  gap: 24px;
+  justify-content: space-between;
+  gap: 16px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border);
 }
 
-.temperature-control strong {
-  min-width: 55px;
-  color: #fff;
-  font-size: 19px;
-  text-align: center;
-}
-
-.temperature-control button {
-  width: 42px;
-  height: 42px;
-  border: 1px solid #2b4258;
-  border-radius: 10px;
-  background: #1b3044;
-  color: #f6f9ff;
+.heating-header h2 {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 0;
   font-size: 24px;
-  cursor: pointer;
-}
-
-.temperature-control button:hover {
-  background: #285078;
-}
-
-.comfort-panel {
-  display: flex;
-  align-items: center;
-  gap: 18px;
-}
-
-.comfort-symbol {
-  display: grid;
-  place-items: center;
-  width: 54px;
-  height: 54px;
-  flex-shrink: 0;
-  border: 3px solid #43d66f;
-  border-radius: 50%;
-  color: #43d66f;
-  font-size: 30px;
-  font-weight: 800;
-}
-
-.comfort-heading {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-bottom: 8px;
-}
-
-.comfort-heading h2 {
-  margin: 0;
-}
-
-.comfort-badge {
-  padding: 5px 9px;
-  border-radius: 999px;
-  background: #153e2b;
-  color: #65e58a;
-  font-size: 11px;
   font-weight: 700;
 }
 
-.comfort-panel p {
-  margin: 0 0 5px;
-  color: #e2eaf3;
-  font-size: 13px;
+.heating-icon {
+  color: var(--gold);
 }
 
-.comfort-panel .comfort-description {
+.auto-toggle {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.auto-toggle input {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+
+.switch-track {
+  position: relative;
+  width: 64px;
+  height: 36px;
+  border-radius: 999px;
+  background: #3a4d66;
+  transition: background 0.2s ease;
+}
+
+.switch-thumb {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #fff;
+  transition: transform 0.2s ease;
+}
+
+.auto-toggle input:checked + .switch-track {
+  background: #1f6fe5;
+}
+
+.auto-toggle input:checked + .switch-track .switch-thumb {
+  transform: translateX(28px);
+}
+
+.auto-toggle input:focus-visible + .switch-track {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+
+.target-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 48px;
+  padding-top: 20px;
+}
+
+.target-label {
+  font-size: 18px;
+}
+
+.stepper {
+  display: flex;
+  align-items: stretch;
+  gap: 4px;
+}
+
+.stepper button,
+.stepper output {
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--border);
+  background: var(--panel-2);
+  color: #fff;
+}
+
+/* Big tap targets: the SRS says the app must work through gloves. */
+.stepper button {
+  width: 56px;
+  min-height: 52px;
+  border-radius: 10px;
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.stepper button:first-child { border-radius: 10px 0 0 10px; }
+.stepper button:last-child { border-radius: 0 10px 10px 0; }
+
+.stepper button:hover:not(:disabled) {
+  background: #173761;
+}
+
+.stepper button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.stepper output {
+  min-width: 160px;
+  padding: 0 18px;
+  background: #081a30;
+  font-size: 30px;
+  font-weight: 700;
+}
+
+/* ---------- Placeholder pages ---------- */
+
+.page-placeholder {
+  padding: 28px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--panel);
+}
+
+.page-placeholder h1 {
+  margin-bottom: 8px;
+}
+
+.page-placeholder p {
+  margin: 0;
   color: var(--muted);
-  line-height: 1.5;
 }
 
-@media (max-width: 950px) {
-  .dashboard {
-    padding: 18px;
-  }
+/* ---------- Responsive ---------- */
 
-  .hero-banner {
-    min-height: 280px;
-    padding: 28px;
-  }
-
+@media (max-width: 1100px) {
   .metrics-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
-@media (max-width: 600px) {
-  .dashboard {
-    padding: 12px;
+/* Tablet / phone: sidebar hides, header tabs move to a bottom bar. */
+@media (max-width: 860px) {
+  .app-header {
+    padding: 12px 16px;
+  }
+
+  .brand-name {
+    font-size: 26px;
+  }
+
+  .app-body {
+    grid-template-columns: 1fr;
+    padding: 12px 12px 88px;
+  }
+
+  .app-sidebar .nav-side {
+    display: none;
+  }
+
+  .app-sidebar {
+    padding: 0;
+    border: 0;
+    background: none;
+  }
+
+  .nav-top {
+    position: fixed;
+    z-index: 10;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    justify-content: space-around;
+    gap: 4px;
+    padding: 8px 8px calc(8px + env(safe-area-inset-bottom));
+    border-top: 1px solid var(--border);
+    background: rgba(7, 21, 38, 0.97);
+  }
+
+  .nav-top .nav-link {
+    flex: 1;
+    flex-direction: column;
+    gap: 4px;
+    padding: 8px 4px;
+    font-size: 13px;
+    justify-content: center;
   }
 
   .hero-banner {
-    min-height: 290px;
-    padding: 22px;
-    background-position: 62% center;
+    min-height: 190px;
+    padding: 24px;
   }
 
-  .hero-banner h1 {
-    font-size: 35px;
+  .hero-description {
+    font-size: 16px;
   }
 
   .desktop-break {
     display: none;
   }
 
-  .device-status-grid {
-    grid-template-columns: 1fr;
-    gap: 10px;
+  .target-row {
+    flex-direction: column;
+    gap: 14px;
   }
+}
 
-  .metrics-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 10px;
-  }
-
+@media (max-width: 480px) {
   .metric-card {
+    min-height: 128px;
+  }
+
+  .metric-value {
+    font-size: 32px;
+  }
+
+  .hero-banner {
+    background:
+      linear-gradient(90deg, rgba(7, 21, 38, 0.9) 0%, rgba(7, 21, 38, 0.65) 70%, rgba(7, 21, 38, 0.35) 100%),
+      url('./assets/hero-mountains.svg') 70% center / cover;
+  }
+
+  .heating-panel {
     padding: 16px;
   }
 
-  .section-title-row h2 {
-    font-size: 18px;
+  .heating-header h2 {
+    gap: 8px;
+    font-size: 19px;
+    white-space: nowrap;
   }
 
-  .heating-panel,
-  .comfort-panel {
-    padding: 18px;
+  .heating-icon {
+    width: 24px;
+    height: 24px;
   }
 
-  .comfort-panel {
-    align-items: flex-start;
+  .auto-toggle {
+    gap: 8px;
+    font-size: 15px;
+    white-space: nowrap;
   }
 
-  .comfort-symbol {
-    width: 42px;
-    height: 42px;
-    font-size: 23px;
+  .switch-track {
+    width: 56px;
+    height: 32px;
   }
 
-  .temperature-control {
-    gap: 14px;
+  .switch-thumb {
+    width: 24px;
+    height: 24px;
+  }
+
+  .auto-toggle input:checked + .switch-track .switch-thumb {
+    transform: translateX(24px);
+  }
+
+  .stepper output {
+    min-width: 130px;
+    font-size: 26px;
   }
 }

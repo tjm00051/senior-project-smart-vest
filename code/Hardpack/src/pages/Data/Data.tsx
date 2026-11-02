@@ -1,10 +1,10 @@
-function History() {
+function Analytics() {
   return (
-    <div>
-      <h1>History</h1>
-      <p>View previous vest data</p>
+    <div className="page-placeholder">
+      <h1>Analytics</h1>
+      <p>Session history, runs and charts will appear here.</p>
     </div>
   )
 }
 
-export default History
+export default Analytics

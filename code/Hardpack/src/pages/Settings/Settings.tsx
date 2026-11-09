@@ -1,8 +1,8 @@
 function Settings() {
   return (
-    <div>
+    <div className="page-placeholder">
       <h1>Settings</h1>
-      <p>Manage vest and application settings</p>
+      <p>Manage vest and application settings.</p>
     </div>
   )
 }

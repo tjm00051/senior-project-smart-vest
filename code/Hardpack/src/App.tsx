@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 
+import AppLayout from './components/Layout/AppLayout'
 import Dashboard from './pages/Dashboard/Dashboard'
 import Data from './pages/Data/Data'
 import Settings from './pages/Settings/Settings'
@@ -11,11 +12,16 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Dashboard />} />
-        <Route path="/data" element={<Data />} />
-        <Route path="/history" element={<Navigate to="/data" replace />} />
-        <Route path="/settings" element={<Settings />} />
-        <Route path="/profile" element={<Profile />} />
+        <Route element={<AppLayout />}>
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/analytics" element={<Data />} />
+          <Route path="/settings" element={<Settings />} />
+          <Route path="/profile" element={<Profile />} />
+          {/* old links */}
+          <Route path="/data" element={<Navigate to="/analytics" replace />} />
+          <Route path="/history" element={<Navigate to="/analytics" replace />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   )

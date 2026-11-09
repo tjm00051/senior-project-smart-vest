@@ -1,10 +1,12 @@
+// Sample values for the UI preview until the vest streams real data over Bluetooth.
+// Numbers are realistic for the chosen sensors (skin temp ~90–95 °F, not core body temp).
 export const mockVestData = {
-  vestId: 'Test_Vest_ID',
+  vestId: 'ThermoShell-001',
   connected: true,
-  sessionLength: '1:24:49',
 
-  heartRate: 142,
-  bodyTemperature: 98.6,
-  bloodOxygen: 98,
-  battery: 84,
+  heartRate: 128,
+  skinTemperature: 91.8,
+  ambientTemperature: 18.2,
+  bloodOxygen: 97,
+  battery: 78,
 }
